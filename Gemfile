@@ -36,6 +36,10 @@ gem 'autoprefixer-rails'
 gem 'bcrypt', :require => "bcrypt"
 gem 'mail_form'
 gem 'simple_form'
+gem 'will_paginate', '~> 3.0'
+gem 'paperclip', '~> 4.2'
+gem 'wysiwyg-rails'
+gem 'font-awesome-rails' #wysiwyg uses font aswesome
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

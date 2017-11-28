@@ -1,2 +1,23 @@
-<h1>Admin::Categories#new</h1>
-<p>Find me in app/views/admin/categories/new.html.erb</p>
+<h2>Add New Category</h2>
+
+<!-- call the admin category controller and not the frontend -->
+<%= form_for [:admin, @category] do |f| %>
+  <!-- check for errors -->
+  <% if @category.errors.any? %>
+      <% @category.errors.full_messages.each do |msg| %>
+        <!-- show error msg -->
+        <div class="alert alert-danger">
+          <%= msg %>
+        </div>
+      <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %> <br />
+    <%= f.text_field :name, class: 'form-control' %> <br />
+  </div>
+
+<%= f.submit "Submit", class: 'btn btn-primary' %>
+<%= link_to "Cancel", admin_categories_path, class: 'btn btn-default' %>
+
+<% end %>
