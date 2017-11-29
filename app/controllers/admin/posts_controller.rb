@@ -24,11 +24,12 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+
     if params[:post][:image].blank?
       @post.image = nil
     end
-    
-    @post = Post.find(params[:id])
+
     if @post.update(post_params)
       flash[:notice] = "Post Updated"
       redirect_to admin_posts_path
@@ -55,7 +56,6 @@ class Admin::PostsController < Admin::ApplicationController
 
   private
   def post_params
-    #user_id
-    params.require(:post).permit(:title, :category_id, :tags, :body, :image)
+    params.require(:post).permit(:title, :category_id, :user_id, :tags, :body, :image)
   end
 end

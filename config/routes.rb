@@ -111,7 +111,7 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :categories
-  resources :comments
+
   resources "contacts", only: [:new, :create]
 
   namespace :admin do
@@ -119,12 +119,18 @@ Rails.application.routes.draw do
     resources :categories
     resources :comments
     resources :users
+    resources :sessions
 
+  end
+
+  #adding comments inside posts because comments can exist only inside a post
+  resources :posts do
+    resources :comments
   end
 
   root 'posts#index'
   get 'about' => 'about#index'
   get 'contact' => 'contacts#new'
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

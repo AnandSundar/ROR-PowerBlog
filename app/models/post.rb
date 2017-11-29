@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :category
-  belongs_to :users, optional: true #optional is added to prevent user exists error
+  belongs_to :user, optional: true #optional is added to prevent user exists error
   has_many :comments
 
   validates :title, presence: true
