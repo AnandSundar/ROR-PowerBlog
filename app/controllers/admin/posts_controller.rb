@@ -1,4 +1,6 @@
 class Admin::PostsController < Admin::ApplicationController
+  before_action :verify_logged_in
+
   def new
     @page_title = "Add Post"
     @post = Post.new
