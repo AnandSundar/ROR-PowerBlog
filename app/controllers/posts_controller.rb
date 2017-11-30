@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    if params[:search] #search for posts using search bar
+      @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    else
+      @posts = Post.all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    end
     @categories = Category.all
   end
 

@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   has_attached_file :image, :default_url => ":style/rails.jpg"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  #this will take care of search bars functionality
   def self.search(query)
     where("title like ? OR body like ?", "%#{query}%", "%#{query}%")
   end
